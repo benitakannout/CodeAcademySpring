@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head></head>
+<body>
+
+<table>
+    <tr>
+        <th>name</th>
+        <th>age</th>
+    </tr>
+    <tr th:each = "question: ${questions}">
+        <td th:text="${question.getId()}"></td>
+        <td th:text="${question.getQuestion()}">45</td>
+    </tr>
+</table>
+
+</body>
+</html>
