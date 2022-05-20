@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 public class QuestionsDto {
 
-    private long id;
+    private int id;
     private String question;
 
 }

@@ -17,7 +17,7 @@ public class Journal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     private long user_id;
     private int day_number;
