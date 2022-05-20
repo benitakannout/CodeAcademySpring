@@ -2,7 +2,6 @@ package eu.codeacademy.project.questions.service;
 
 import eu.codeacademy.project.questions.dto.QuestionsDto;
 import eu.codeacademy.project.questions.mapper.QuestionsMapper;
-import eu.codeacademy.project.questions.repository.QuestionsRepository1;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
