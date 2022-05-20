@@ -6,6 +6,7 @@ spring:
     password: a
   sql:
     init:
+      platform: postgresql
       schema-locations: classpath:db/db-schema.sql
       data-locations: classpath:db/initial-data.sql
   security:
