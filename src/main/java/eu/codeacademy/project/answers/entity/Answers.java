@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Columns;
-import org.springframework.web.bind.annotation.Mapping;
 
 import javax.persistence.*;
 

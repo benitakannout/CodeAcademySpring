@@ -1,5 +1,8 @@
-package eu.codeacademy.project.questions.service;
+package eu.codeacademy.project.answers.service;
 
+import eu.codeacademy.project.answers.dto.AnswersDto;
+import eu.codeacademy.project.answers.mapper.AnswersMapper;
+import eu.codeacademy.project.answers.repository.AnswersRepository;
 import eu.codeacademy.project.questions.dto.QuestionsDto;
 import eu.codeacademy.project.questions.mapper.QuestionsMapper;
 import eu.codeacademy.project.questions.repository.QuestionsRepository;
@@ -11,13 +14,13 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class QuestionsService {
+public class AnswersService {
 
-    private final QuestionsRepository questionsRepository;
-    private final QuestionsMapper mapper;
+    private final AnswersRepository answersRepository;
+    private final AnswersMapper mapper;
 
-    public List<QuestionsDto> getQuestions() {
-        return questionsRepository.findAll().stream()
+    public List<AnswersDto> getQuestions() {
+        return answersRepository.findAll().stream()
                 .map(mapper::mapTo)
                 .collect(Collectors.toList());
     }
