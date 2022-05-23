@@ -19,7 +19,7 @@ public class AnswersService {
     private final AnswersRepository answersRepository;
     private final AnswersMapper mapper;
 
-    public List<AnswersDto> getQuestions() {
+    public List<AnswersDto> getAnswers() {
         return answersRepository.findAll().stream()
                 .map(mapper::mapTo)
                 .collect(Collectors.toList());

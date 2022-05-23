@@ -1,5 +1,6 @@
 package eu.codeacademy.project.questions.controller;
 
+import eu.codeacademy.project.answers.service.AnswersService;
 import eu.codeacademy.project.questions.service.QuestionsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
