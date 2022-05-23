@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS answer_card;
 
 CREATE TABLE answer_card (
                         id SERIAL PRIMARY KEY NOT NULL,
-                        user_id BIGINT REFERENCES users(id),
+                        user_id SERIAL REFERENCES users(id),
                         day_number INT NOT NULL,
                         difficulty INT NOT NULL,
                         fulfillment INT NOT NULL,

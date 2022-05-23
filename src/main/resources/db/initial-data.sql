@@ -10,3 +10,9 @@ VALUES ('Write a motivational mantra to repeat each day.'),
        ('What one thing can I do to make my habit more fun?'),
        ('What is the most rewarding thing about committing to my habit?'),
        ('How does my new habit make me a better person?')
+
+INSERT INTO users (username, name, email, city, password)
+VALUES ('user1', 'Vardenis', 'vardenis@test.lt', 'Vilnius', '123')
+
+INSERT INTO answer_card (user_id, day_number, difficulty, fulfillment, motivation, question, answer)
+VALUES (1, 1, 3, 5, 4, 1, 'My mind is peaceful')
