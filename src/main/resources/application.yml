@@ -9,10 +9,6 @@ spring:
       platform: postgresql
       schema-locations: classpath:db/db-schema.sql
       data-locations: classpath:db/initial-data.sql
-  security:
-    user:
-      name: user@user.lt
-      password: user
   jpa:
     hibernate:
       ddl-auto: validate

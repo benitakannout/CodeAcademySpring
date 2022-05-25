@@ -15,11 +15,11 @@ public class AnswersController {
 
     private final AnswersService answersService;
 
-    @GetMapping
-    public String getAnswers (Model model) {
-        model.addAttribute("answers", answersService.getAnswers());
+    @GetMapping("/answers")
+    public String getUserAnswers(Model model) {
+        model.addAttribute("answer", answersService.getAnswerByUserAndDay(1));
 
-        return "answers";
+        return "answers/answers";
     }
 
 }

@@ -12,7 +12,7 @@ VALUES ('Write a motivational mantra to repeat each day.'),
        ('How does my new habit make me a better person?')
 
 INSERT INTO users (username, name, email, city, password)
-VALUES ('user1', 'Vardenis', 'vardenis@test.lt', 'Vilnius', '123')
+VALUES ('user1', 'Vardenis', 'vardenis@test.lt', 'Vilnius', '{bcrypt}$2a$10$Txbfb/13PoiCWdLFqTRLdOpTisYFGbkLh.Eas/sPw0GkOl0QrNxQq');
 
-INSERT INTO answer_card (user_id, day_number, difficulty, fulfillment, motivation, question, answer)
-VALUES (1, 1, 3, 5, 4, 1, 'My mind is peaceful')
+INSERT INTO answer_card (username, day_number, difficulty, fulfillment, motivation, question, answer)
+VALUES ('user1', 1, 3, 5, 4, 1, 'My mind is peaceful')

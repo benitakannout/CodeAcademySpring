@@ -17,18 +17,18 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
                         id SERIAL PRIMARY KEY NOT NULL,
-                        username VARCHAR(50) NOT NULL,
+                        username VARCHAR(50) NOT NULL UNIQUE,
                         name VARCHAR(15) NOT NULL,
                         email VARCHAR(60) NOT NULL,
                         city VARCHAR(15),
-                        password VARCHAR(50) NOT NULL
+                        password VARCHAR(250) NOT NULL
 );
 
 DROP TABLE IF EXISTS answer_card;
 
 CREATE TABLE answer_card (
                         id SERIAL PRIMARY KEY NOT NULL,
-                        user_id SERIAL REFERENCES users(id),
+                        user_id INT REFERENCES users(id),
                         day_number INT NOT NULL,
                         difficulty INT NOT NULL,
                         fulfillment INT NOT NULL,
