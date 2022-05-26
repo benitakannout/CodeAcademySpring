@@ -11,7 +11,8 @@
     </tr>
     <tr th:each = "question: ${questions}">
         <td th:text="${question.getId()}"></td>
-        <td th:text="${question.getQuestion()}"></td>
+        <td><a th:href="@{/answers/{questionId}/update(questionId=${question.getId()})}"
+            th:text="${question.getQuestion()}"></a></td>
     </tr>
 </table>
 

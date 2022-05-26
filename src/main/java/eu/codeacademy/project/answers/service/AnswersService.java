@@ -26,30 +26,12 @@ public class AnswersService {
                 .collect(Collectors.toList());
     }
 
-    public List<AnswersDto> getAnswerByUserId(int userId) {
-        return answersRepository.findAll().
-                stream().
-                map(mapper::mapTo).
-                collect(Collectors.toList());
-    }
-
-    public AnswersDto getAnswerByUserAndDay(int dayNumber) {
+    public Optional<AnswersDto> getAnswerByUserAndDay(int dayNumber) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-        List<Answers> allUserAnswers = answersRepository.findAnswersByUsername(currentPrincipalName);
-
-        List<AnswersDto> mappedAnswers = allUserAnswers.
-                stream().
-                map(mapper::mapTo).
-                collect(Collectors.toList());
-
-        for (AnswersDto answer : mappedAnswers) {
-            if(answer.getUser().getUsername().equals(currentPrincipalName)) {
-                return answer;
-            }
-        }
-
-        return null;
+        Optional<Answers> answer = answersRepository.findAnswersByUsernameAndDayNumber(currentPrincipalName, dayNumber);
+        Optional<AnswersDto> answerMapped = answer.map(mapper::mapTo);
+        return answerMapped;
     }
 
 }
