@@ -3,8 +3,6 @@ package eu.codeacademy.project.answers.controller;
 
 import eu.codeacademy.project.answers.dto.AnswersDto;
 import eu.codeacademy.project.answers.service.AnswersService;
-import eu.codeacademy.project.questions.service.QuestionsService;
-import eu.codeacademy.project.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.security.Principal;
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -44,7 +42,10 @@ public class AnswersController {
 
 
     @PostMapping("/answers/create")
-    public String createAnswer(Model model, AnswersDto answer) {
+    public String createAnswer(Model model, @Valid AnswersDto answer, BindingResult result) {
+        if (result.hasErrors()) {
+            return "/answers/create";
+        }
         model.addAttribute("answer", answer);
         answersService.createAnswer(answer);
         return "redirect:questions/questions";
