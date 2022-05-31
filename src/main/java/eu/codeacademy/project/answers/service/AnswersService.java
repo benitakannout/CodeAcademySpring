@@ -22,10 +22,10 @@ public class AnswersService {
     private final AnswersRepository answersRepository;
     private final AnswersMapper mapper;
 
-    public Optional<AnswersDto> getAnswerByUserAndDay(int dayNumber) {
+    public Optional<AnswersDto> getAnswerByUserAndDay(int question) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-        Optional<Answers> answer = answersRepository.findAnswersByUsernameAndDayNumber(currentPrincipalName, dayNumber);
+        Optional<Answers> answer = answersRepository.findAnswersByUsernameAndDayNumber(currentPrincipalName, question);
         Optional<AnswersDto> answerMapped = answer.map(mapper::mapTo);
         return answerMapped;
     }
@@ -34,6 +34,7 @@ public class AnswersService {
     public void createAnswer(AnswersDto answer) {
 
         answersRepository.save(Answers.builder()
+                        .user(answer.getUser())
                         .difficulty(answer.getDifficulty())
                         .fulfillment(answer.getFulfillment())
                         .motivation(answer.getMotivation())

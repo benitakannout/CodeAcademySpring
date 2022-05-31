@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface AnswersRepository extends JpaRepository<Answers, Integer> {
 
-    @Query(value = "SELECT a FROM Answers a JOIN FETCH a.user WHERE a.user.email = :email AND a.day_number = :dayNumber")
-    Optional<Answers> findAnswersByUsernameAndDayNumber(String email, int dayNumber);
+    @Query(value = "SELECT a FROM Answers a JOIN FETCH a.user WHERE a.user.email = :email AND a.question.id = :question")
+    Optional<Answers> findAnswersByUsernameAndDayNumber(String email, int question);
 
 }

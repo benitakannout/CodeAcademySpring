@@ -1,5 +1,6 @@
 package eu.codeacademy.project.answers.entity;
 
+import eu.codeacademy.project.questions.entity.Questions;
 import eu.codeacademy.project.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,13 +25,13 @@ public class Answers {
     @JoinColumn(name = "id", updatable = false, insertable = false)
     private User user;
 
-    private int day_number;
     private int difficulty;
     private int fulfillment;
     private int motivation;
 
-    @JoinColumn
-    private int question;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", updatable = false, insertable = false)
+    private Questions question;
 
     private String answer;
 }

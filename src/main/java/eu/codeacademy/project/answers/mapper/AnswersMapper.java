@@ -10,9 +10,7 @@ public class AnswersMapper {
 
     public AnswersDto mapTo(Answers answers) {
         return AnswersDto.builder().
-                id(answers.getId()).
                 user(answers.getUser()).
-                day_number(answers.getDay_number()).
                 difficulty(answers.getDifficulty()).
                 fulfillment(answers.getFulfillment()).
                 motivation(answers.getMotivation()).
