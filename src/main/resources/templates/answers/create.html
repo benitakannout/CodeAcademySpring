@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragments/layout :: head('Answer card')"></head>
+<body>
+
+<div class="container">
+  <h3 th:text="'New entry'"></h3>
+  <form method="post" th:object="${answer}" th:action="@{/answers/create}">
+    <div class="mb-3">
+      <label th:text="'How motivated are you today? (1-5)'"></label>
+      <input class="form-control" type="number" placeholder="Write answer" th:field="*{motivation}">
+    </div>
+
+    <div class="mb-3">
+      <label th:text="'How fulfilled are you today? (1-5)'"></label>
+      <input class="form-control" type="number" placeholder="Write answer" th:field="*{fulfillment}">
+    </div>
+
+    <div class="mb-3">
+      <label th:text="'How difficult was it to commit to your habit today? (1-5)'"></label>
+      <input class="form-control" type="number" placeholder="Write answer" th:field="*{difficulty}">
+    </div>
+
+    <div class="mb-3">
+      <label th:text="'Write your answer.'"></label>
+      <input class="form-control" type="text" placeholder="Write answer" th:field="*{answer}">
+    </div>
+
+    <button class="btn btn-primary" type="submit" th:text="'Create entry'"></button>
+  </form>
+
+</div>
+
+</body>
+</html>
