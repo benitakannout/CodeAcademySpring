@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -42,13 +43,13 @@ public class AnswersController {
 
 
     @PostMapping("/answers/create")
-    public String createAnswer(Model model, @Valid AnswersDto answer, BindingResult result) {
+    public String createAnswer(Model model, @Valid AnswersDto answer, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
-            return "/answers/create";
+            return "/error";
         }
         model.addAttribute("answer", answer);
-        answersService.createAnswer(answer);
-        return "redirect:questions/questions";
+        answersService.createAnswer(answer, principal);
+        return "/success";
     }
 
 }

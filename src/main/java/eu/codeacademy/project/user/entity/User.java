@@ -1,5 +1,6 @@
 package eu.codeacademy.project.user.entity;
 
+import eu.codeacademy.project.answers.entity.Answers;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "users")
 @Entity
@@ -18,11 +20,15 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User  implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="id", referencedColumnName="id")
+    private Set<Answers> answersSet;
 
     private String username;
     private String name;

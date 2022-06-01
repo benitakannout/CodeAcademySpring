@@ -4,16 +4,16 @@ import eu.codeacademy.project.answers.dto.AnswersDto;
 import eu.codeacademy.project.answers.entity.Answers;
 import eu.codeacademy.project.answers.mapper.AnswersMapper;
 import eu.codeacademy.project.answers.repository.AnswersRepository;
-import eu.codeacademy.project.questions.repository.QuestionsRepository;
+import eu.codeacademy.project.user.entity.User;
+import eu.codeacademy.project.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.security.Principal;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +21,7 @@ public class AnswersService {
 
     private final AnswersRepository answersRepository;
     private final AnswersMapper mapper;
+    private final UserRepository userRepository;
 
     public Optional<AnswersDto> getAnswerByUserAndDay(int question) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -31,10 +32,14 @@ public class AnswersService {
     }
 
     @Transactional
-    public void createAnswer(AnswersDto answer) {
+    public void createAnswer(AnswersDto answer, Principal principal) {
+
+        String username = principal.getName();
+        Optional<User> user = userRepository.findUserByEmail(username);
+        User userId = user.get();
 
         answersRepository.save(Answers.builder()
-                        .user(answer.getUser())
+                        .user(userId)
                         .difficulty(answer.getDifficulty())
                         .fulfillment(answer.getFulfillment())
                         .motivation(answer.getMotivation())

@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static org.hibernate.annotations.CascadeType.PERSIST;
+
 @Table(name = "answer_card")
 @Entity
 @Getter
@@ -21,8 +23,8 @@ public class Answers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", updatable = false, insertable = false)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     private int difficulty;
