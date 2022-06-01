@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.Mapping;
 
 import javax.persistence.*;
 
@@ -21,9 +22,10 @@ public class Answers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", insertable = false, nullable = false)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -32,7 +34,7 @@ public class Answers {
     private int motivation;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", updatable = false, insertable = false)
+    @JoinColumn(name = "question")
     private Questions question;
 
     private String answer;

@@ -7,10 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -24,32 +22,31 @@ public class AnswersController {
     private final AnswersService answersService;
 
     @GetMapping("/answers/{questionId}/update")
-    public String getUserAnswers(Model model, @PathVariable("questionId") int id) {
+    public String getUserAnswers(Model model, @PathVariable("questionId") int id,
+                                 RedirectAttributes redirectAttributes) {
         Optional<AnswersDto> answer = answersService.getAnswerByUserAndDay(id);
         if (answer.isPresent()) {
             model.addAttribute("answer", answer.get());
             return "/answers/answers";
         }
-
+        redirectAttributes.addAttribute("questionId", id);
         return "redirect:/answers/open";
     }
 
     @GetMapping("/answers/open")
-    public String openCreateAnswer(Model model) {
-        model.addAttribute("answer", AnswersDto.builder().build());
-
-        return "/answers/create";
+    public String openAnswerForm(Model model, @RequestParam("questionId") int id) {
+        model.addAttribute("answerCard", AnswersDto.builder().build());
+        model.addAttribute("questionId", id);
+        return("/answers/create");
     }
 
-
-    @PostMapping("/answers/create")
-    public String createAnswer(Model model, @Valid AnswersDto answer, BindingResult result, Principal principal) {
+    @PostMapping("/answers/{answerId}/create")
+    public String createAnswer(Model model, @RequestParam("questionId") int id, @Valid AnswersDto answer, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
             return "/error";
         }
-        model.addAttribute("answer", answer);
-        answersService.createAnswer(answer, principal);
+        model.addAttribute("answerCard", answer);
+        answersService.createAnswer(answer, principal, id);
         return "/success";
     }
-
 }
