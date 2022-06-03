@@ -4,18 +4,24 @@
 <head th:replace="fragments/layout :: head(#{'Questions'})"></head>
 <body>
 
-<table>
-    <tr>
-        <th>Day no.</th>
-        <th>Question</th>
-    </tr>
-    <tr th:each = "question: ${questions}">
-        <td th:text="${question.getId()}"></td>
-        <td><a th:href="@{/answers/{questionId}/update(questionId=${question.getId()})}"
-            th:text="${question.getQuestion()}"></a></td>
-    </tr>
+<div class="container">
+    <h3 th:text="'Choose a question:'"></h3>
+    <table class="table">
+        <thead>
+            <tr class="table-info">
+                <th scope="col">Day no.</th>
+                <th scope="col">Question</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "question: ${questions}">
+                <td th:text="${question.getId()}"></td>
+                <td><a th:href="@{/answers/{questionId}/update(questionId=${question.getId()})}"
+                    th:text="${question.getQuestion()}"></a></td>
+            </tr>
+    </tbody>
 </table>
-
+</div>
 
 
 </body>

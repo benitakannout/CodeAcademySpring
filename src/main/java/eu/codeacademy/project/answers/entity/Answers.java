@@ -15,7 +15,7 @@ import static org.hibernate.annotations.CascadeType.PERSIST;
 @Table(name = "answer_card")
 @Entity
 @Getter
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Answers {

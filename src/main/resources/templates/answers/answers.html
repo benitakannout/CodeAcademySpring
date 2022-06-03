@@ -4,7 +4,31 @@
 <head th:replace="fragments/layout :: head('Answer card')"></head>
 <body>
 
-<td th:text="${answer.getAnswer()}"></td>
+<div class="container">
+    <div>
+        <h3 th:text="'How motivated were you?'"></h3>
+        <td th:text="${answer.motivation}"></td>
+    </div>
+    <div>
+        <h3 th:text="'How fulfilled were you?'"></h3>
+        <td th:text="${answer.fulfillment}"></td>
+    </div>
+    <div>
+        <h3 th:text="'How difficult was it to commit to your habit?'"></h3>
+        <td th:text="${answer.difficulty}"></td>
+    </div>
+    <div>
+        <h3 th:text="'Your daily answer:'"></h3>
+        <td th:text="${answer.answer}"></td>
+    </div>
+    <div>
+        <a th:href="@{/answers/updateForm(questionId=${questionId})}">
+            <button class="btn btn-primary">
+                Update entry
+            </button>
+        </a>
+    </div>
+</div>
 
 </body>
 </html>

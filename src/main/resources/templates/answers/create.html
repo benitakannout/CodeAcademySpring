@@ -6,7 +6,7 @@
 
 <div class="container">
   <h3 th:text="'New entry'"></h3>
-  <form method="post" th:object="${answerCard}" th:action="@{/answers/{answerId}/create(questionId=${questionId})}">
+  <form method="post" th:object="${answerCard}" th:action="@{/answers/create(questionId=${questionId})}">
     <div class="mb-3">
       <label th:text="'How motivated are you today? (1-5)'"></label>
       <input class="form-control" type="number" placeholder="Write answer" th:field="*{motivation}">

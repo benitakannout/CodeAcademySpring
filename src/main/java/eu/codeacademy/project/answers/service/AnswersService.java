@@ -54,4 +54,28 @@ public class AnswersService {
                 .build());
     }
 
+    public Optional<AnswersDto> getAnswerByUsernameAndId(String name, int id) {
+        Optional<Answers> answerToUpdate = answersRepository.findAnswersByUsernameAndDayNumber(name, id);
+        if (answerToUpdate.isPresent()){
+            return answerToUpdate.map(mapper::mapTo);
+        }
+        return null;
+    }
+
+    @Transactional
+    public void updateAnswer(AnswersDto answer, Principal principal, int questionId) {
+
+        Optional<Answers> answerToUpdate = answersRepository.findAnswersByUsernameAndDayNumber(principal.getName(), questionId);
+
+        if (answerToUpdate.isPresent()) {
+            Answers newAnswer = answerToUpdate.get().toBuilder()
+                    .answer(answer.getAnswer())
+                    .fulfillment(answer.getFulfillment())
+                    .motivation(answer.getMotivation())
+                    .difficulty(answer.getDifficulty())
+                    .build();
+
+            answersRepository.save(newAnswer);
+        }
+    }
 }

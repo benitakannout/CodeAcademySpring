@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragments/layout :: head('Answer card')"></head>
+<body>
+
+<div class="container">
+    <h3 th:text="'Update entry'"></h3>
+    <form method="post" th:object="${answerCard}" th:action="@{/answers/{questionId}/updateEntry(questionId=${questionId})}">
+        <div class="mb-3">
+            <label th:text="'How motivated are you today? (1-5)'"></label>
+            <span th:text="'Your answer - ' + ${answerCard.motivation}"></span>
+            <input class="form-control" type="number" placeholder="Write new answer" th:field="*{motivation}">
+        </div>
+
+        <div class="mb-3">
+            <label th:text="'How fulfilled are you today? (1-5)'"></label>
+            <span th:text="'Your answer - ' + ${answerCard.fulfillment}"></span>
+            <input class="form-control" type="number" placeholder="Write new answer" th:field="*{fulfillment}">
+        </div>
+
+        <div class="mb-3">
+            <label th:text="'How difficult was it to commit to your habit today? (1-5)'"></label>
+            <span th:text="'Your answer - ' + ${answerCard.difficulty}"></span>
+            <input class="form-control" type="number" placeholder="Write new answer" th:field="*{difficulty}">
+        </div>
+
+        <div class="mb-3">
+            <label th:text="'Write your answer.'"></label>
+            <span th:text="'Your answer - ' + ${answerCard.answer}"></span>
+            <input class="form-control" type="text" placeholder="Write new answer" th:field="*{answer}">
+        </div>
+
+        <button class="btn btn-primary" type="submit" th:text="'Update entry'"></button>
+    </form>
+
+</div>
+
+</body>
+</html>
