@@ -4,6 +4,7 @@
 <head th:replace="fragments/layout :: head('Answer card')"></head>
 <body>
 
+
 <div class="container">
   <h3 th:text="'New entry'"></h3>
   <form method="post" th:object="${answerCard}" th:action="@{/answers/create(questionId=${questionId})}">
