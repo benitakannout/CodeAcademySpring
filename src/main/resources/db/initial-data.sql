@@ -21,3 +21,8 @@ INSERT INTO public_questions (question)
 VALUES ('What is the most memorable compliment that you have ever gotten?'),
        ('How did you practice self-care this week?'),
        ('When was the last time you stepped out of your comfort zone?');
+
+INSERT INTO public_comments (question, user_id, comment)
+VALUES (1, 1, 'That I am inspiring'),
+       (2, 1, 'I went to get a massage'),
+       (2, 1, 'I wrote in my gratitude journal');

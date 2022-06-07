@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -19,6 +20,13 @@ public class ForumController {
         model.addAttribute("questions", forumService.getPublicQuestions());
 
         return "forum/questions";
+    }
+
+    @GetMapping("/{questionId}/view")
+    public String viewQuestionComments(Model model, @PathVariable("questionId") int questionId)
+    {
+        model.addAttribute("comments", forumService.getCommentsByQuestionId(questionId));
+        return "forum/question";
     }
 
 }

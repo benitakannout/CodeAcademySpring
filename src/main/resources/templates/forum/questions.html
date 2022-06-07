@@ -10,7 +10,7 @@
 <table class="table">
     <tbody>
     <tr th:each = "question: ${questions}">
-        <td><a th:href="@{/}"
+        <td><a th:href="@{/forum/{questionId}/view(questionId=${question.getId()})}"
                th:text="${question.getQuestion()}"></a></td>
     </tr>
     </tbody>
