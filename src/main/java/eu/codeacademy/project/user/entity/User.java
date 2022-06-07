@@ -1,6 +1,7 @@
 package eu.codeacademy.project.user.entity;
 
 import eu.codeacademy.project.answers.entity.Answers;
+import eu.codeacademy.project.forum.entity.UserComment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,6 +30,10 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name="id", referencedColumnName="id")
     private Set<Answers> answersSet;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="id", referencedColumnName="id")
+    private Set<UserComment> commentsSet;
 
     private String username;
     private String name;

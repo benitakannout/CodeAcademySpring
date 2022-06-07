@@ -9,10 +9,15 @@ VALUES ('Write a motivational mantra to repeat each day.'),
        ('What was the main thing blocking me from adopting this habit in the past?'),
        ('What one thing can I do to make my habit more fun?'),
        ('What is the most rewarding thing about committing to my habit?'),
-       ('How does my new habit make me a better person?')
+       ('How does my new habit make me a better person?');
 
 INSERT INTO users (username, name, email, city, password)
 VALUES ('user1', 'Vardenis', 'vardenis@test.lt', 'Vilnius', '{bcrypt}$2a$10$Txbfb/13PoiCWdLFqTRLdOpTisYFGbkLh.Eas/sPw0GkOl0QrNxQq');
 
 INSERT INTO answer_card (user_id, difficulty, fulfillment, motivation, question, answer)
-VALUES (1, 3, 5, 4, 1, 'My mind is peaceful')
+VALUES (1, 3, 5, 4, 1, 'My mind is peaceful');
+
+INSERT INTO public_questions (question)
+VALUES ('What is the most memorable compliment that you have ever gotten?'),
+       ('How did you practice self-care this week?'),
+       ('When was the last time you stepped out of your comfort zone?');

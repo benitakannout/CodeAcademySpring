@@ -9,7 +9,6 @@ DROP TABLE IF EXISTS public_questions;
 
 CREATE TABLE public_questions (
                         id SERIAL PRIMARY KEY NOT NULL,
-                        date DATE NOT NULL,
                         question VARCHAR(500) NOT NULL
 );
 
@@ -34,4 +33,13 @@ CREATE TABLE answer_card (
                         motivation INT NOT NULL,
                         question SERIAL REFERENCES daily_questions(id),
                         answer VARCHAR(600)
+);
+
+DROP TABLE IF EXISTS public_comments;
+
+CREATE TABLE public_comments (
+                                  id SERIAL PRIMARY KEY NOT NULL,
+                                  question INT REFERENCES public_questions(id),
+                                  user_id INT REFERENCES users(id),
+                                  comment VARCHAR(500) NOT NULL
 );
