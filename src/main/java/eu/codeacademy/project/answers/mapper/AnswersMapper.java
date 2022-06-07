@@ -2,7 +2,6 @@ package eu.codeacademy.project.answers.mapper;
 
 import eu.codeacademy.project.answers.dto.AnswersDto;
 import eu.codeacademy.project.answers.entity.Answers;
-import eu.codeacademy.project.user.entity.User;
 import org.springframework.stereotype.Component;
 
 @Component
