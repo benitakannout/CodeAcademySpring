@@ -24,6 +24,7 @@
             <div class="navbar-nav">
                 <a class="nav-link active" th:href="@{/}">Home</a>
                 <a class="nav-link active" th:href="@{/questions}"  sec:authorize="isAuthenticated()">My questions</a>
+                <a class="nav-link active" th:href="@{/forum}">Forum</a>
             </div>
         </div>
         <div sec:authorize="!isAuthenticated()">
