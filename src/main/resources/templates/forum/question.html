@@ -27,7 +27,13 @@
         <h3>You must log in to post a comment.</h3>
     </div>
     <div  sec:authorize="isAuthenticated()">
-        <a type="button" class="btn btn-danger" role="button" aria-current="page" th:href="@{/logout}" th:text="'Log out'"></a>
+        <form method="post" th:object="${comment}" th:action="@{/forum/comment(questionId=${questionId})}">
+            <div class="mb-3">
+                <label th:text="'Write your comment:'"></label>
+                <input class="form-control" type="text" placeholder="Your comment" th:field="*{comment}">
+            </div>
+            <button class="btn btn-primary" type="submit" th:text="'Post comment'"></button>
+        </form>
     </div>
 </div>
 

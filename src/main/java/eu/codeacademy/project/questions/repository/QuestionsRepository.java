@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface QuestionsRepository extends JpaRepository<Questions, Integer> {
 
-    @Query("SELECT q FROM Questions q WHERE q.id = :id")
+    @Query(value = "SELECT q FROM Questions q WHERE q.id = :id")
     Optional<Questions> findQuestionsById(int id);
 
 }

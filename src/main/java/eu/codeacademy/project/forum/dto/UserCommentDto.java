@@ -11,7 +11,6 @@ import lombok.Getter;
 @Getter
 public class UserCommentDto {
 
-    private int id;
     private PublicQuestion question;
     private User user;
     private String comment;

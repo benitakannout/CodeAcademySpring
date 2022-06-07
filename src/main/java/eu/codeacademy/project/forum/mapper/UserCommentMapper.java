@@ -9,7 +9,6 @@ public class UserCommentMapper {
 
     public UserCommentDto mapTo(UserComment comment) {
         return UserCommentDto.builder().
-                id(comment.getId()).
                 question(comment.getQuestion()).
                 user(comment.getUser()).
                 comment(comment.getComment()).build();
