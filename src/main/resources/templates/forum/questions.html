@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragments/layout :: head(#{'Forum'})"></head>
+<body>
+
+<div th:replace="fragments/layout :: navbar"></div>
+
+<h3 th:text="'Choose a question:'"></h3>
+<table class="table">
+    <tbody>
+    <tr th:each = "question: ${questions}">
+        <td><a th:href="@{/}"
+               th:text="${question.getQuestion()}"></a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
