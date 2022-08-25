@@ -2,7 +2,6 @@ package eu.codeacademy.project.answers.controller;
 
 
 import eu.codeacademy.project.answers.dto.AnswersDto;
-import eu.codeacademy.project.answers.entity.Answers;
 import eu.codeacademy.project.answers.service.AnswersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -54,7 +53,7 @@ public class AnswersController {
         return "/success";
     }
 
-    @GetMapping("/answers/updateForm")
+    @GetMapping("/answers/updateForm/")
     public String openAnswerUpdateForm(Model model,
                                        @RequestParam(name = "questionId") int questionId, Principal principal) {
         Optional<AnswersDto> answersDtoOptional = answersService.getAnswerByUsernameAndId(principal.getName(), questionId);
@@ -62,7 +61,7 @@ public class AnswersController {
             AnswersDto answer = answersDtoOptional.get();
             model.addAttribute("answerCard", answer);
             model.addAttribute("questionId", questionId);
-            return ("/answers/update");
+            return "/answers/update";
         }
 
         return "/error";

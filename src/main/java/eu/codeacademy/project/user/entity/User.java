@@ -2,10 +2,7 @@ package eu.codeacademy.project.user.entity;
 
 import eu.codeacademy.project.answers.entity.Answers;
 import eu.codeacademy.project.forum.entity.UserComment;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +15,7 @@ import java.util.Set;
 @Table(name = "users")
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

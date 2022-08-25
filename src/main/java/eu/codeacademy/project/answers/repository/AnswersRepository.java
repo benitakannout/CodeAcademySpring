@@ -14,4 +14,6 @@ public interface AnswersRepository extends JpaRepository<Answers, Integer> {
     @Query(value = "SELECT a FROM Answers a JOIN FETCH a.user WHERE a.user.email = :email AND a.question.id = :question")
     Optional<Answers> findAnswersByUsernameAndDayNumber(String email, int question);
 
+    @Query(value = "SELECT a FROM Answers a JOIN FETCH a.user WHERE a.user.email = :email")
+    List<Answers> findAllUserAnswers(String email);
 }
