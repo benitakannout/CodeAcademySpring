@@ -12,10 +12,12 @@ const PublicQuestions = () => {
             .catch((error) => console.log('error', error))
     }, [])
 
-    return (<>
-            {questionObject.map(questionObject => (
-                <div>{questionObject.question}</div>
-            ))
+    return (
+        <>
+            {
+                questionObject.map(obj => (
+                    <div>{obj.question}</div>
+                ))
             }
         </>
     )

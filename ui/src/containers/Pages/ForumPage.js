@@ -11,10 +11,13 @@ const ForumPage = () => {
             .catch((error) => console.log('error', error))
     }, [])
 
-    return (<>
-            {forumObject.map(forumObject => (
-                <div>{forumObject.question}</div>
-            ))
+    return (
+        <>
+            <div>Forum page</div>
+            {
+                forumObject.map(obj => (
+                    <div>{obj.question}</div>
+                ))
             }
         </>
     )

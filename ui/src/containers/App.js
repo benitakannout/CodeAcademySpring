@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import Login from "./Pages/Login";
 import PublicQuestions from "./Pages/PublicQuestions";
@@ -33,11 +33,11 @@ function App() {
                 <Route path='api/questions' element={<PublicQuestions/>}/>
                 <Route path='api/forum' element={<ForumPage/>}/>
             </Routes>
-                <h1>Habitify</h1>
-                <p>Log in to access member features</p>
-                <Login/>
-                <NavbarComponent/>
-            </BrowserRouter>
+            <h1>Habitify</h1>
+            <p>Log in to access member features</p>
+            <Login/>
+            <NavbarComponent/>
+        </BrowserRouter>
     );
 
 }
